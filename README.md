@@ -15,7 +15,7 @@ Once inside the container, you can use quickstart to set up Juju and
 bundletester to test a charm:
 
     $ubuntu@ab3d:~/$ juju quickstart
-    $ubuntu@ab3d:~/$ bundletester -t lp:~user/charms/trusty/foo/branch
+    $ubuntu@ab3d:~/$ bundletester -t cs:trusty/ubuntu
 
 Note that local provider is not currently available within the container,
 but it is possible to use an existing local provider with Charmbox (see below).
@@ -26,7 +26,7 @@ but it is possible to use an existing local provider with Charmbox (see below).
 If you already have Juju configured, you can use your existing Juju,
 including any environments, with a few extra arguments to the run command:
 
-    sudo docker run --rm -ti --net=host -v $JUJU_HOME:/home/ubuntu/.juju johnsca/charmbox
+    sudo docker run --rm -ti --net=host -v $HOME/.juju:/home/ubuntu/.juju johnsca/charmbox
 
 Note that if you are using local provider, you will need to bootstrap from
 outside the container, but all subsequent operations will work normally within
@@ -34,7 +34,7 @@ the container:
 
     juju switch local
     juju bootstrap
-    sudo docker run --rm --net=host -v $JUJU_HOME:/home/ubuntu/.juju -ti charmbox
+    sudo docker run --rm --net=host -v $HOME/.juju:/home/ubuntu/.juju -ti charmbox
     $ubuntu@ab3d:~/$ bundletester -t lp:~user/charms/trusty/foo/branch
     $ubuntu@ab3d:~/$ exit
     juju destroy-environment local
