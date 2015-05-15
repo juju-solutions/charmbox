@@ -99,4 +99,4 @@ environment variables. With that done, you're ready to use docker.
 You do not need to run the docker commands using sudo because
 boot2docker runs as root.
 
-    docker run  -ti whitmo/jujubox
+    docker run  -ti johnsca/charmbox
