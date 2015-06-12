@@ -1,4 +1,4 @@
-FROM whitmo/jujubox:latest
+FROM jujusolutions/jujubox:latest
 
 VOLUME ["/home/ubuntu/.juju", "/home/ubuntu/trusty", "/home/ubuntu/precise"]
 RUN apt-get update -qy

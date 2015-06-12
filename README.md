@@ -12,7 +12,7 @@ container which adds tools for development, testing, and review of Juju Charms.
 If you already have Docker installed (see below), and you don't want to install
 Juju on your host machine, the container can be run directly from Docker Hub:
 
-    sudo docker run --rm -ti johnsca/charmbox
+    sudo docker run --rm -ti jujusolutions/charmbox
 
 Once inside the container, you can use quickstart to set up Juju with any provider
 except local, and use bundletester to test a charm:
@@ -29,7 +29,7 @@ but it is possible to use an existing local provider with Charmbox (see below).
 If you already have Juju configured, you can use your existing Juju installation,
 including any environments, with a few extra arguments to the run command:
 
-    sudo docker run --rm -ti --net=host -v $HOME/.juju:/home/ubuntu/.juju johnsca/charmbox
+    sudo docker run --rm -ti --net=host -v $HOME/.juju:/home/ubuntu/.juju jujusolutions/charmbox
 
 
 ### Using Charmbox with Existing Juju and Local Provider
@@ -58,7 +58,7 @@ you bootstrapped:
 If you have charms already checked out on your host machine, you can mount the
 Juju repository subdirectory:
 
-    sudo docker run --rm -ti -v $JUJU_REPOSITORY/trusty:/home/ubuntu/trusty johnsca/charmbox
+    sudo docker run --rm -ti -v $JUJU_REPOSITORY/trusty:/home/ubuntu/trusty jujusolutions/charmbox
 
 At this time, you cannot directly mount `$JUJU_REPOSITORY` inside
 the container because it would overwrite `/home/ubuntu`.  Thus, it is
@@ -99,4 +99,4 @@ environment variables. With that done, you're ready to use docker.
 You do not need to run the docker commands using sudo because
 boot2docker runs as root.
 
-    docker run  -ti johnsca/charmbox
+    docker run  -ti jujusolutions/charmbox
