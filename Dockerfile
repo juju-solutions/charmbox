@@ -1,4 +1,4 @@
-FROM jujusolutions/jujubox:latest
+FROM jujusolutions/jujubox:devel
 
 VOLUME ["/home/ubuntu/.juju", "/home/ubuntu/trusty", "/home/ubuntu/precise"]
 RUN apt-get update -qy
