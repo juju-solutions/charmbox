@@ -64,6 +64,13 @@ At this time, you cannot directly mount `$JUJU_REPOSITORY` inside
 the container because it would overwrite `/home/ubuntu`.  Thus, it is
 recommended that you mount the `trusty` or `precise` subdirectories.
 
+### Mounting CWD into charmbox for testing
+
+You can map the current working directory into charmbox for testing a single
+charm:
+
+    sudo docker run --rm -ti -v $(pwd):/home/ubuntu/trusty/{charm} jujusolutions/charmbox
+
 
 ## Building Charmbox from Source
 
