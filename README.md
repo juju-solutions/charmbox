@@ -96,14 +96,12 @@ and boot2docker. This is relatively easy for users of brew:
     brew install cask
     brew cask install virtualbox
     brew install docker
-    brew install boot2docker
+    brew install docker-machine
 
-    boot2docker init
-    boot2docker up
+    docker-machine create -d virtualbox default
+    docker-machine start default && eval $(docker-machine env default)
 
-When boot2docker finishes, it will prompt you to export Docker
+When docker-machine finishes, it will prompt you to export Docker
 environment variables. With that done, you're ready to use docker.
-You do not need to run the docker commands using sudo because
-boot2docker runs as root.
 
     docker run  -ti jujusolutions/charmbox
