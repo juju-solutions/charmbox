@@ -91,7 +91,7 @@ Docker >= 1.4.1 recommended.
 ### OS X
 
 Docker does not run natively in OS X, so we'll need to use VirtualBox
-and boot2docker. This is relatively easy for users of brew:
+and docker-machine. This is relatively easy for users of brew:
 
     brew install cask
     brew cask install virtualbox
