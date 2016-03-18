@@ -12,6 +12,7 @@ sudo apt-get install -qy \
                         python-dev \
                         python-pip \
                         python-virtualenv \
+                        python-tox \
                         rsync \
                         unzip
 
