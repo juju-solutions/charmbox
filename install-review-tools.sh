@@ -2,7 +2,6 @@
 set -e
 HOME=/home/ubuntu
 
-sudo add-apt-repository ppa:yellow/ppa
 sudo apt-get update -qqy
 sudo apt-get install -qy \
                         build-essential \
