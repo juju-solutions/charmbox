@@ -2,8 +2,6 @@
 set -e
 HOME=/home/ubuntu
 
-# Use marco's ppa while we test the charm/charm-tools overlap stuff
-sudo add-apt-repository ppa:marcoceppi/charm-tools-2.0
 sudo apt-get update -qqy
 sudo apt-get install -qy \
                         build-essential \
