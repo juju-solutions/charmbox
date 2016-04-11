@@ -13,7 +13,8 @@ sudo apt-get install -qy \
                         python-virtualenv \
                         python-tox \
                         rsync \
-                        unzip
+                        unzip \
+			make
 
 echo "export LAYER_PATH=${HOME}/layers" >> /home/ubuntu/.bashrc
 echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
