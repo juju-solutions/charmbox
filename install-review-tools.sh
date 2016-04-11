@@ -10,7 +10,15 @@ sudo apt-get install -qy unzip \
                          python-pip \
                          python-virtualenv \
                          python-tox \
-                         rsync 
+                         rsync  \
+			 make
 sudo pip install bundletester flake8 pyyaml --upgrade
 
+# Fix for CI choking on duplicate hosts if the host key has changed
+# which is common. 
+mkdir -p $HOME/.ssh
+echo 'Host *' > $HOME/.ssh/config
+echo '  StrictHostKeyChecking no' >> $HOME/.ssh/config
+
 chown -R ubuntu:ubuntu ${HOME}
+
