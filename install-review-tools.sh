@@ -25,5 +25,8 @@ echo '  StrictHostKeyChecking no' >> $HOME/.ssh/config
 touch $HOME/.vimrc
 echo "alias vim=vi" >> /home/ubuntu/.bashrc
 
+echo "export LAYER_PATH=${HOME}/layers" >> /home/ubuntu/.bashrc
+echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
+
 chown -R ubuntu:ubuntu ${HOME}
 
