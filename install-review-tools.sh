@@ -13,4 +13,7 @@ sudo apt-get install -qy unzip \
                          rsync 
 sudo pip install bundletester flake8 pyyaml --upgrade
 
+echo "export LAYER_PATH=${HOME}/layers" >> /home/ubuntu/.bashrc
+echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
+
 chown -R ubuntu:ubuntu ${HOME}
