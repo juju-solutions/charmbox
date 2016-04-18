@@ -10,7 +10,8 @@ sudo apt-get install -qy unzip \
                          python-pip \
                          python-virtualenv \
                          python-tox \
-                         rsync 
+                         rsync  \
+                         make
 sudo pip install bundletester flake8 pyyaml --upgrade
 
 
