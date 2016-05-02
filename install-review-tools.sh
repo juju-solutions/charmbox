@@ -9,10 +9,9 @@ sudo apt-get install -qy unzip \
                          python-dev \
                          python-pip \
                          python-virtualenv \
-                         python-tox \
                          rsync  \
 			 make
-sudo pip install bundletester flake8 pyyaml --upgrade
+sudo pip install bundletester flake8 pyyaml tox --upgrade
 
 
 # Fix for CI choking on duplicate hosts if the host key has changed
