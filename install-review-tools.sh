@@ -22,10 +22,10 @@ sudo apt-get install -qy \
                         python-flake8 \
                         python-pip \
                         python-virtualenv \
-                        python-tox \
                         rsync \
                         unzip \
 			make
+sudo pip install tox --upgrade
 
 echo "export LAYER_PATH=${HOME}/layers" >> /home/ubuntu/.bashrc
 echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
