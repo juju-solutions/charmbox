@@ -2,10 +2,12 @@
 set -e
 HOME=/home/ubuntu
 
+# Add tims awesome PPA for the 2.0 bleeding edge tooling
+sudo add-apt-repository -y ppa:tvansteenburgh/ppa
 sudo apt-get update -qqy
 
 # Fix for CI choking on duplicate hosts if the host key has changed
-# which is common. 
+# which is common.
 mkdir -p $HOME/.ssh
 echo 'Host *' > $HOME/.ssh/config
 echo '  StrictHostKeyChecking no' >> $HOME/.ssh/config
@@ -24,10 +26,10 @@ sudo apt-get install -qy \
                         python-virtualenv \
                         rsync \
                         unzip \
-			make
-sudo pip install tox --upgrade
+                        juju-deployer \
+                        python-jujuclient \
+                        make
 
-echo "export LAYER_PATH=${HOME}/layers" >> /home/ubuntu/.bashrc
-echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
+sudo pip install tox --upgrade
 
 chown -R ubuntu:ubuntu ${HOME}
