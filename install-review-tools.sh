@@ -34,3 +34,5 @@ echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
 
 chown -R ubuntu:ubuntu ${HOME}
 
+# Remove any unnecessary packages here.
+sudo apt-get purge cython gcc
