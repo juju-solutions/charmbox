@@ -1,6 +1,6 @@
-FROM jujusolutions/jujubox:latest
+FROM jujusolutions/jujubox:devel
 
-VOLUME "/home/ubuntu/.juju"
+VOLUME "/home/ubuntu/.local/share/juju"
 VOLUME "/home/ubuntu/trusty"
 VOLUME "/home/ubuntu/builds"
 VOLUME "/home/ubuntu/layers"
