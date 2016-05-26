@@ -1,6 +1,6 @@
-FROM jujusolutions/jujubox:latest
+FROM jujusolutions/jujubox:devel
 
-VOLUME ["/home/ubuntu/.juju", "/home/ubuntu/trusty", "/home/ubuntu/precise"]
+VOLUME ["/home/ubuntu/.local/share/juju", "/home/ubuntu/trusty", "/home/ubuntu/xenial", "/home/ubuntu/layers", "/home/ubuntu/interfaces"
 RUN apt-get update -qy
 RUN apt-get install -qy gcc cython git make
 ADD install-review-tools.sh /install-review-tools.sh

@@ -2,6 +2,8 @@
 set -e
 HOME=/home/ubuntu
 
+# Add tims awesome PPA for the 2.0 bleeding edge tooling
+sudo add-apt-repository -y ppa:tvansteenburgh/ppa
 sudo apt-get update -qqy
 sudo apt-get install -qy unzip \
                          build-essential\
