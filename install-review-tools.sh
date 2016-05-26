@@ -2,6 +2,8 @@
 set -e
 HOME=/home/ubuntu
 
+# Add tims awesome PPA for the 2.0 bleeding edge tooling
+sudo add-apt-repository -y ppa:tvansteenburgh/ppa
 sudo apt-get update -qqy
 sudo apt-get install -qy unzip \
                          build-essential\
@@ -10,7 +12,9 @@ sudo apt-get install -qy unzip \
                          python-pip \
                          python-virtualenv \
                          rsync  \
-			 make
+                         make
+
+sudo pip install -U pip
 sudo pip install bundletester flake8 pyyaml tox --upgrade
 
 
