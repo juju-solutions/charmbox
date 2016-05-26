@@ -1,10 +1,13 @@
 #!/bin/bash
-set -e
+set -ex
+
+# Install the development tools on this image.
+
 HOME=/home/ubuntu
 
-# Add tims awesome PPA for the 2.0 bleeding edge tooling
+# Add Tim's awesome PPA for the 2.0 bleeding edge tooling
 sudo add-apt-repository -y ppa:tvansteenburgh/ppa
-sudo apt-get update -qqy
+sudo apt-get update -qq --fix-missing -y
 
 # Fix for CI choking on duplicate hosts if the host key has changed
 # which is common.
@@ -16,20 +19,21 @@ echo '  StrictHostKeyChecking no' >> $HOME/.ssh/config
 touch $HOME/.vimrc
 echo "alias vim=vi" >> /home/ubuntu/.bashrc
 
-sudo apt-get install -qy \
-                        build-essential \
-                        charm \
-                        charm-tools \
-                        python-dev \
-                        python-flake8 \
-                        python-pip \
-                        python-virtualenv \
-                        rsync \
-                        unzip \
-                        juju-deployer \
-                        python-jujuclient \
-                        make
+sudo apt-get install -qy build-essential \
+  charm \
+  charm-tools \
+  cython \
+  git \
+  make \
+  python-dev \
+  python-flake8 \
+  python-jujuclient \
+  python-pip \
+  python-virtualenv \
+  rsync \
+  unzip
 
-sudo pip install tox --upgrade
+sudo -H pip install --upgrade pip
+sudo -H pip install --upgrade bundletester pyyaml tox
 
 chown -R ubuntu:ubuntu ${HOME}
