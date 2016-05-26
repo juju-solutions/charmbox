@@ -1,17 +1,22 @@
 #!/bin/bash
-set -e
+set -ex
+# Install the additional tools for reviews.
 HOME=/home/ubuntu
 
-sudo apt-get update -qqy
-sudo apt-get install -qy unzip \
-                         build-essential\
-                         charm-tools \
-                         python-dev \
-                         python-pip \
-                         python-virtualenv \
-                         rsync  \
-			 make
-sudo pip install bundletester flake8 pyyaml tox --upgrade
+sudo apt-get update -qq --fix-missing -y
+sudo apt-get install -qy build-essential \
+  charm-tools \
+  cython \
+  git \ 
+  make \
+  python-dev \
+  python-pip \
+  python-virtualenv \
+  rsync \
+  unzip 
+
+sudo pip install --upgrade pip
+sudo pip install --upgrade bundletester flake8 pyyaml tox
 
 
 # Fix for CI choking on duplicate hosts if the host key has changed
@@ -29,3 +34,5 @@ echo "export INTERFACE_PATH=${HOME}/interfaces" >> /home/ubuntu/.bashrc
 
 chown -R ubuntu:ubuntu ${HOME}
 
+# Remove any unnecessary packages here.
+sudo apt-get purge cython gcc
