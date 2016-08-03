@@ -12,10 +12,16 @@ sudo apt-get install -qy unzip \
                          python-pip \
                          python-virtualenv \
                          rsync  \
-                         make
+                         make \
+                         python-jujuclient \
+                         juju-deployer
 
 sudo pip install -U pip
 sudo pip install bundletester flake8 pyyaml tox --upgrade
+
+git clone https://github.com/juju/amulet /tmp/amulet
+cd /tmp/amulet
+pip install -U ./
 
 
 # Fix for CI choking on duplicate hosts if the host key has changed
