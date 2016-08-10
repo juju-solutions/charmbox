@@ -2,17 +2,31 @@
 set -e
 HOME=/home/ubuntu
 
+# Add tims awesome PPA for the 2.0 bleeding edge tooling
+sudo add-apt-repository -y ppa:tvansteenburgh/ppa
+
 sudo apt-get update -qqy
-sudo apt-get install -qy unzip \
-                         build-essential\
+sudo apt-get install -qy amulet \
+                         build-essential \
+                         cython \
                          charm-tools \
+                         git \
+                         make \
                          python-dev \
+                         python3-dev \
                          python-pip \
+                         python3-pip \
                          python-virtualenv \
                          rsync  \
-			 make
-sudo pip install bundletester flake8 pyyaml tox --upgrade
+                         unzip
 
+sudo pip install --upgrade pip
+sudo pip install --upgrade bundletester flake8 pyyaml tox
+
+git clone https://github.com/juju/amulet /tmp/amulet
+cd /tmp/amulet
+pip install --upgrade ./
+pip3 install --upgrade ./
 
 # Fix for CI choking on duplicate hosts if the host key has changed
 # which is common. 
