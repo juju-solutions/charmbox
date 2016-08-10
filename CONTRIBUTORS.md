@@ -6,3 +6,4 @@
  - Matt Bruzek
  - Tim Van Steenburgh
  - Whit Morriss
+ - Charles Butler
