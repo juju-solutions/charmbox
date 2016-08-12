@@ -6,51 +6,42 @@ set -ex
 HOME=/home/ubuntu
 
 # Add tims awesome PPA for the 2.0 bleeding edge tooling
-sudo add-apt-repository -y ppa:tvansteenburgh/ppa
+add-apt-repository -y ppa:tvansteenburgh/ppa
 
-sudo apt-get update -qqy
-sudo apt-get install -qy amulet \
-                         build-essential \
-                         cython \
-                         charm-tools \
-                         git \
-                         make \
-                         python-dev \
-                         python3-dev \
-                         python-pip \
-                         python3-pip \
-                         python-virtualenv \
-                         rsync  \
-                         unzip
+apt-get update -qqy
+apt-get install -qy amulet \
+                    build-essential \
+                    cython \
+                    charm-tools \
+                    git \
+                    make \
+                    python-dev \
+                    python3-dev \
+                    python-pip \
+                    python3-pip \
+                    python-virtualenv \
+                    rsync  \
+                    unzip
 
-sudo pip install --upgrade pip
-sudo pip install --upgrade bundletester flake8 pyyaml tox
-
-base_directory=$PWD
+pip install --upgrade pip
+pip install --upgrade bundletester flake8 pyyaml tox
 
 # Temporarily install amulet from github to get the latest changes.
 git clone https://github.com/juju/amulet /tmp/amulet
 cd /tmp/amulet
 pip install --upgrade ./
 pip3 install --upgrade ./
-cd $base_directory
-rm -rf /tmp/amulet
 
 # Temporarily install python-jujuclient from launchpad to get latest changes.
 bzr branch lp:python-jujuclient /tmp/python-jujuclient
 cd /tmp/python-jujuclient
 pip install --upgrade ./
 pip3 install --upgrade ./
-cd $base_directory
-rm -rf /tmp/python-jujuclient
 
 # Temporarily install charm-tools from github to get the latest changes.
 git clone https://github.com/juju/charm-tools /tmp/charm-tools
 cd /tmp/charm-tools
 pip install --upgrade ./
-pip3 install --upgrade ./
-cd $base_directory
-rm -rf /tmp/charm-tools
 
 # Fix for CI choking on duplicate hosts if the host key has changed
 # which is common.
