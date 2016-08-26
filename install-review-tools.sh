@@ -11,6 +11,7 @@ sudo apt-get install -qy amulet \
                          cython \
                          charm-tools \
                          git \
+                         libssl-dev \
                          make \
                          python-dev \
                          python3-dev \
