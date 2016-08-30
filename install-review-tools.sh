@@ -22,7 +22,7 @@ apt-get install -qy amulet \
                          unzip
 
 pip install --upgrade pip
-pip install amulet flake8 bundletester
+pip install amulet flake8 bundletester tox
 
 # Fix for CI choking on duplicate hosts if the host key has changed
 # which is common. 
