@@ -26,6 +26,8 @@ apt install --no-install-recommends charm
 
 pip install --upgrade pip six
 pip install amulet charm-tools flake8 bundletester tox
+pip3 install --upgrade pip
+pip3 install amulet
 
 # Fix for CI choking on duplicate hosts if the host key has changed
 # which is common. 
