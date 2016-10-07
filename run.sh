@@ -8,5 +8,4 @@ set -e
 
 export HOME=/home/ubuntu
 cd $HOME
-chown -R ubuntu:ubuntu $HOME
 sudo -u ubuntu ssh-agent /bin/bash
