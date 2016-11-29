@@ -1,4 +1,4 @@
-FROM jujusolutions/jujubox:latest
+FROM jujusolutions/jujubox:devel
 LABEL maintainer="kevin.monroe@canonical.com"
 
 ARG JUJU_USER=ubuntu
