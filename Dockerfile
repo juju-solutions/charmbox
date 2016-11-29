@@ -1,4 +1,4 @@
-FROM jujusolutions/jujubox:latest
+FROM jujusolutions/jujubox:devel
 MAINTAINER Charles Butler <charles.butler@canonical.com>
 
 ARG JUJU_USER=ubuntu
