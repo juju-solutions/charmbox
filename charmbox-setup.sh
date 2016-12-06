@@ -25,7 +25,7 @@ sudo apt install --no-install-recommends charm
 sudo pip install --upgrade pip six
 sudo pip install amulet flake8 bundletester tox
 sudo pip3 install --upgrade pip
-sudo pip3 install amulet
+sudo pip3 install amulet flake8
 
 # Install charm-tools from source
 git clone https://github.com/juju/charm-tools /tmp/charm-tools
