@@ -21,6 +21,9 @@ sudo apt-get install -qy  \
                      rsync  \
                      unzip
 
+# Latest charm deb is in ppa:juju/stable, but our parent box (jujubox:devel)
+# only includes ppa:juju/devel. Add the stable ppa and install charm.
+sudo add-apt-repository -u -y ppa:juju/stable
 sudo apt install --no-install-recommends charm
 
 sudo pip install --upgrade pip six
