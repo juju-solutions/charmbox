@@ -1,7 +1,10 @@
 FROM jujusolutions/jujubox:devel
+MAINTAINER Charles Butler <charles.butler@canonical.com>
 
-ADD install-review-tools.sh /install-review-tools.sh
-RUN /install-review-tools.sh
-# Override jujubox run.sh
-ADD run.sh /run.sh
-CMD /run.sh
+ARG JUJU_USER=ubuntu
+
+ENV LAYER_PATH=/home/$JUJU_USER/charms/layers
+ENV INTERFACE_PATH=/home/$JUJU_USER/charms/interfaces
+
+ADD charmbox-setup.sh /charmbox-setup.sh
+RUN /charmbox-setup.sh
