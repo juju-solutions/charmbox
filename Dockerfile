@@ -1,5 +1,5 @@
 FROM jujusolutions/jujubox:latest
-MAINTAINER Charles Butler <charles.butler@canonical.com>
+LABEL maintainer "Charles Butler <charles.butler@canonical.com>"
 
 ARG JUJU_USER=ubuntu
 
