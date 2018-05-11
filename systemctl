@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# First parameter should be start or stop
+# Second parameter will be the name of a unit file
+
+if [ $# -lt 2 ]
+then
+echo "usage: $0 start unit-file"
+exit 0
+fi
+
+if [ $1 == "start" ]
+then
+what=$(grep What /etc/systemd/system/"$2" | cut -f 2 -d '=')
+where=$(grep Where /etc/systemd/system/"$2" | cut -f 2 -d '=')
+mkdir -p "$where"
+squashfuse $what $where
+exit 0
+fi
+
+if [ $1 == "stop" ]
+then
+where=$(grep Where /etc/systemd/system/"$2" | cut -f 2 -d '=')
+umount $where
+exit 0
+fi

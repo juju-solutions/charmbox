@@ -2,10 +2,9 @@
 set -ex
 
 # Bundletester and friends in tims ppa
-sudo add-apt-repository -u -y ppa:tvansteenburgh/ppa
+sudo add-apt-repository -yu ppa:tvansteenburgh/ppa
 
-sudo apt-get update -qq
-sudo apt-get install -qy  \
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -qy  \
                      build-essential \
                      git \
                      juju-deployer \
@@ -17,22 +16,19 @@ sudo apt-get install -qy  \
                      python-virtualenv \
                      python3-dev \
                      python3-pip \
-                     rsync  \
+                     rsync \
                      unzip
-
-# Latest charm deb is in ppa:juju/stable, but our parent box (jujubox:devel)
-# only includes ppa:juju/devel. Add the stable ppa and install charm.
-sudo add-apt-repository -u -y ppa:juju/stable
-sudo apt install --no-install-recommends charm
 
 sudo pip install --upgrade pip six
 sudo pip install amulet flake8 bundletester tox
 sudo pip3 install --upgrade pip
 sudo pip3 install amulet
 
-# Install charm-tools from source
-git clone https://github.com/juju/charm-tools /tmp/charm-tools
-cd /tmp/charm-tools
-sudo pip2 install .
-cd ..
-rm -rf charm-tools
+# Install charm
+#sudo systemctl start snapd
+sudo /usr/lib/snapd/snapd &
+sleep 5
+#sudo snap install charm
+#sudo mv /usr/local/bin/systemctl /usr/local/bin/systemctl.shim
+# Above will fail because /dev/fuse dosent exist, so this doesnt work:
+#sudo squashfuse /var/lib/snapd/snaps/core_4571.snap /snap/core/4571
