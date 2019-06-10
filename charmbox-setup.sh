@@ -31,7 +31,7 @@ sudo pip3 install amulet
 # Install charm-tools from source
 git clone https://github.com/juju/charm-tools /tmp/charm-tools
 cd /tmp/charm-tools
-sudo pip2 install .
+sudo pip3 install .
 cd ..
 rm -rf charm-tools
 git clone https://github.com/juju-solutions/matrix.git
