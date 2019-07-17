@@ -19,13 +19,32 @@ sudo apt-get install -qy  \
                      python3-pip \
                      python3-flake8 \
                      rsync  \
+                     wget \
                      unzip
 
-# Latest charm deb is in ppa:juju/stable, but our parent box (jujubox:devel)
-# only includes ppa:juju/devel. Add the stable ppa and install charm.
-sudo add-apt-repository -u -y ppa:juju/stable
-sudo apt install --no-install-recommends charm
+# charmstore-client should be installed with snap, but docker can't do that.
+# Live a little; let's GO!
+mkdir -p /tmp/charm-go /tmp/charm-gopath
+(
+    cd /tmp/charm-go
+    wget https://dl.google.com/go/go1.12.6.linux-amd64.tar.gz
+    tar zxf go1.12.6.linux-amd64.tar.gz
+)
+export GOROOT=/tmp/charm-go/go
+export GOPATH=/tmp/charm-gopath
+export PATH=${GOPATH}/bin:${GOROOT}/bin:${PATH}
 
+# NB: no go files in root, but we just need the source, so || true
+go get github.com/juju/charmstore-client || true
+(
+    cd ${GOPATH}/src/github.com/juju/charmstore-client
+    make deps install
+    sudo mv ${GOPATH}/bin/charm* /usr/local/bin
+)
+# kthxbye
+rm -rf /tmp/charm-go /tmp/charm-gopath
+
+# Install pip reqs
 sudo pip install --upgrade pip six
 sudo pip install amulet flake8 bundletester tox
 sudo pip3 install --upgrade pip
@@ -33,12 +52,15 @@ sudo pip3 install amulet
 
 # Install charm-tools from source
 git clone https://github.com/juju/charm-tools /tmp/charm-tools
-cd /tmp/charm-tools
-sudo pip3 install .
-cd ..
-rm -rf charm-tools
-git clone https://github.com/juju-solutions/matrix.git
-cd matrix
-sudo pip3 install . -f wheelhouse --no-index
-cd ..
-rm -rf matrix
+(
+    cd /tmp/charm-tools
+    sudo pip3 install .
+)
+rm -rf /tmp/charm-tools
+
+git clone https://github.com/juju-solutions/matrix.git /tmp/matrix
+(
+    cd /tmp/matrix
+    sudo pip3 install . -f wheelhouse --no-index
+)
+rm -rf /tmp/matrix
