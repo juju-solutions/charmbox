@@ -1,8 +1,11 @@
 #!/bin/bash
 set -ex
 
-# Bundletester and friends in tims ppa
-sudo add-apt-repository -u -y ppa:tvansteenburgh/ppa
+# Bundletester and friends in tims ppa (not focal yet)
+cat <<EOF | sudo tee /etc/apt/sources.list.d/tvansteenburgh-ubuntu-ppa-bionic.list
+deb http://ppa.launchpad.net/tvansteenburgh/ppa/ubuntu bionic main
+EOF
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9E436B89CB4C41BC
 
 sudo apt-get update -qq
 sudo apt-get install -qy  \
@@ -57,10 +60,3 @@ git clone https://github.com/juju/charm-tools /tmp/charm-tools
     sudo pip3 install .
 )
 rm -rf /tmp/charm-tools
-
-git clone https://github.com/juju-solutions/matrix.git /tmp/matrix
-(
-    cd /tmp/matrix
-    sudo pip3 install . -f wheelhouse --no-index
-)
-rm -rf /tmp/matrix
