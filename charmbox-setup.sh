@@ -1,26 +1,16 @@
 #!/bin/bash
 set -ex
 
-# Bundletester and friends in tims ppa (not focal yet)
-cat <<EOF | sudo tee /etc/apt/sources.list.d/tvansteenburgh-ubuntu-ppa-bionic.list
-deb http://ppa.launchpad.net/tvansteenburgh/ppa/ubuntu bionic main
-EOF
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9E436B89CB4C41BC
-
 sudo apt-get update -qq
 sudo apt-get install -qy  \
                      build-essential \
                      git \
-                     juju-deployer \
                      libssl-dev \
                      make \
-                     python-dev \
-                     python-jujuclient \
-                     python-pip \
-                     python-virtualenv \
                      python3-dev \
+                     python3-jujuclient \
                      python3-pip \
-                     python3-flake8 \
+                     python3-virtualenv \
                      rsync  \
                      wget \
                      unzip
@@ -48,10 +38,8 @@ go get github.com/juju/charmstore-client || true
 rm -rf /tmp/charm-go /tmp/charm-gopath
 
 # Install pip reqs
-sudo pip install --upgrade pip six
-sudo pip install amulet flake8 bundletester tox
-sudo pip3 install --upgrade pip
-sudo pip3 install amulet
+sudo pip3 install pyyaml==3.13  # version needed for charm-tools
+sudo pip3 install amulet flake8 six tox
 
 # Install charm-tools from source
 git clone https://github.com/juju/charm-tools /tmp/charm-tools
