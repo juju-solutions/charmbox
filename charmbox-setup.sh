@@ -19,6 +19,7 @@ sudo apt-get install -qy  \
                      python3-pip \
                      python3-flake8 \
                      rsync  \
+                     wget  \
                      unzip
 
 sudo pip install --upgrade pip six
