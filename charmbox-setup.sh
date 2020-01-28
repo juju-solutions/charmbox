@@ -55,8 +55,3 @@ cd /tmp/charm-tools
 sudo pip3 install .
 cd ..
 rm -rf charm-tools
-git clone https://github.com/juju-solutions/matrix.git
-cd matrix
-sudo pip3 install . -f wheelhouse --no-index
-cd ..
-rm -rf matrix
